@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import { Main } from './Main'
+import { renderWithTheme } from 'tests/helper'
+import Main from './Main'
 
 describe('<Main />', () => {
   it('should render the heading', () => {
@@ -11,7 +12,7 @@ describe('<Main />', () => {
   })
 
   it('should render the colors correctly', () => {
-    const { container } = render(<Main />)
+    const { container } = renderWithTheme(<Main />)
 
     expect(container.firstChild).toHaveStyle({ 'background-color': '#06092b' })
   })

@@ -4,7 +4,7 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-  DocumentInitialProps
+  DocumentInitialProps,
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
           enhanceApp: (App) =>
             function enhance(props) {
               return sheet.collectStyles(<App {...props} />)
-            }
+            },
         })
 
       const initialProps = await Document.getInitialProps(ctx)
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
-        )
+        ),
       } as unknown as DocumentInitialProps
     } finally {
       sheet.seal()
